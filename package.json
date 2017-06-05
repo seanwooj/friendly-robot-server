@@ -1,5 +1,5 @@
 {
-  "name": "music-server",
+  "name": "friendly-robot-server",
   "version": "1.0.0",
   "description": "",
   "private": "true",
@@ -27,11 +27,9 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "babel-node start-server.js",
-    "client": "babel-node start-client.js",
-    "test": "cross-env NODE_ENV=TEST jest",
-    "test-watch": "cross-env NODE_ENV=TEST jest --watch"
+    "client": "babel-node start-client.js"
   },
-  "author": "Fullstack React",
+  "author": "Sean Kim",
   "devDependencies": {
     "concurrently": "3.1.0",
     "jest": "17.0.0",
