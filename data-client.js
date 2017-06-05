@@ -1,5 +1,5 @@
 const fs = require('fs');
-const SAVED_PAGE_DB_FILE = './src/db/contentfulPageContent.json';
+const SAVED_PAGE_DB_FILE = './db/contentfulPageContent.json';
 
 class DataClient {
   constructor() {
@@ -14,7 +14,7 @@ class DataClient {
           reject(err);
         }
 
-        resolve(data);
+        resolve(JSON.parse(data));
       });
     });
   }

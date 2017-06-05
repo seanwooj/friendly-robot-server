@@ -10,6 +10,7 @@ app.set('port', (process.env.API_PORT || 3001));
 
 app.get('/api/pages', (req, res) => {
   dataClient.fetchData().then((data) => {
+    console.log(data);
     res.json(data)
   }).catch((error) => {
     res.status(500).json({
