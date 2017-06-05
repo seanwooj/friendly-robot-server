@@ -3,11 +3,11 @@ const SAVED_PAGE_DB_FILE = './db/contentfulPageContent.json';
 
 class DataClient {
   constructor() {
-    this.fetchData = this.fetchData.bind(this);
-    this.getDataByPath = this.getDataByPath.bind(this);
+    this.fetchPages = this.fetchPages.bind(this);
+    this.fetchPage = this.fetchPage.bind(this);
   }
 
-  fetchData() {
+  fetchPages() {
     return new Promise((resolve, reject) => {
       fs.readFile(SAVED_PAGE_DB_FILE, function(err, data) {
         if(err) {
@@ -19,11 +19,13 @@ class DataClient {
     });
   }
 
-  getDataByPath(path) {
-    return new Promise((resolve, reject) => {
-      //
-    })
+  fetchPage(vanityUrl) {
+    return this.fetchPages().
+      then((pages) => {
+        return pages.filter((page) => { return page.fields.vanityUrl === vanityUrl});
+      })
   }
+
 }
 
 export default DataClient;

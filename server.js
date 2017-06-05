@@ -9,8 +9,17 @@ const dataClient = new DataClient();
 app.set('port', (process.env.API_PORT || 3001));
 
 app.get('/api/pages', (req, res) => {
-  dataClient.fetchData().then((data) => {
-    console.log(data);
+  // console.log(req.query);
+  let fetchedPromise;
+
+  if(req.query.vanityUrl) {
+    fetchedPromise = dataClient.fetchPage(req.query.vanityUrl);
+  } else {
+    fetchedPromise = dataClient.fetchPages();
+  }
+
+  fetchedPromise.then((data) => {
+    // console.log(data);
     res.json(data)
   }).catch((error) => {
     res.status(500).json({
