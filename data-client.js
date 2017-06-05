@@ -22,7 +22,11 @@ class DataClient {
   fetchPage(vanityUrl) {
     return this.fetchPages().
       then((pages) => {
-        return pages.filter((page) => { return page.fields.vanityUrl === vanityUrl});
+        // probably need to add some sort of catch to make sure that there is an
+        // error thrown if the page goes down.
+
+        // return only the first page.
+        return pages.filter((page) => { return page.fields.vanityUrl === vanityUrl})[0];
       })
   }
 
